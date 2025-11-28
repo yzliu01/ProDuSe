@@ -94,25 +94,38 @@ mamba install -c bioconda pysam
    └─ pysam 0.7.7 would require
       └─ python <3.0.0 , which can be installed.
 =====================================================================================================
-00000  mamba search pysam # check which version is vaailable and suitable
-69280  mamba install -c bioconda pysam=0.23.3
-00000  mamba install -c bioconda -c conda-forge samtools=1.22.1 bwa=0.7.19 python=3.12.0 # worked version
-00000  mamba install -c bioconda pysam=0.23.3
-69281  python /home/yzliu/eDNA/faststorage/yzliu/DK_proj/population_genomics/software/ProDuSe/ProDuSe/ClipOverlap.py -h
+
+## create env and install main dependancies
+mamba create -n for_produse_test
+mamba activate for_produse_test
+
+mamba search pysam # check which version is vaailable and suitable
+mamba install -c bioconda pysam=0.23.3
+mamba install -c bioconda -c conda-forge samtools=1.22.1 bwa=0.7.19 python=3.12.0 # worked version
+mamba install -c bioconda pysam=0.23.3
+## bewlow check if other denpendancies are needed
+python /home/yzliu/eDNA/faststorage/yzliu/DK_proj/population_genomics/software/ProDuSe/ProDuSe/ClipOverlap.py -h
 
 ## install more dependancies (configobj, packaging)
-69282  mamba install -c bioconda configobj
-69283  python /home/yzliu/eDNA/faststorage/yzliu/DK_proj/population_genomics/software/ProDuSe/ProDuSe/ClipOverlap.py -h
+mamba install -c bioconda configobj
+mamba install -c bioconda packaging
+## below check again if other denpendancies are needed (no more is needed)
+python /home/yzliu/eDNA/faststorage/yzliu/DK_proj/population_genomics/software/ProDuSe/ProDuSe/ClipOverlap.py -h
 
-69284  mamba install -c bioconda packaging
-69285  python /home/yzliu/eDNA/faststorage/yzliu/DK_proj/population_genomics/software/ProDuSe/ProDuSe/ClipOverlap.py -h
+## download produse and go to its folder
+cd /home/yzliu/eDNA/faststorage/yzliu/DK_proj/population_genomics/software
+ls
+git clone https://github.com/morinlab/ProDuSe.git
+ls
+cd ProDuSe/
 
 ## then ready to run clip
-69286  conda list
+conda list
 
-#69297  conda deactivate
-#69298  conda rename -n for_produce for_produse
-#69299  conda activate for_produse_test
+## change env name
+#conda deactivate
+#conda rename -n for_produce for_produse
+# conda activate for_produse_test
 
 ClipOverlap=/home/yzliu/eDNA/faststorage/yzliu/DK_proj/population_genomics/software/ProDuSe/ProDuSe/ClipOverlap.py
 ## test a small genome
