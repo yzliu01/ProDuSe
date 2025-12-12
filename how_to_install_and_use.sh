@@ -1,5 +1,9 @@
 https://produse.readthedocs.io/en/latest/ClipOverlap.html
 
+or 
+
+https://genome.sph.umich.edu/wiki/BamUtil:_clipOverlap
+
 
 mamba create -n for_produse_test
 mamba activate for_produse_test
